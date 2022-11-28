@@ -1,5 +1,5 @@
 # rookie-game-scoreboard
-Scoreboard for a 10-team rookie game
+Scoreboard for a 7-team rookie game
 
 **ma** and **cm** are two schools or teams<br>
 This is not built for game scoring, it is for overall tracking<br>
