@@ -16,11 +16,6 @@
                 font-family: sans-serif;
                 margin: 5%;
             }
-            /* if i do a light mode*/
-            bodylight {
-                background-color: #fff;
-                color: #000;
-            }
             html, body {
                 height:100%;
             }
@@ -30,26 +25,12 @@
                 justify-content: center;
                 flex-direction: column;
             }
-            /*more light mode*/
-            .teamlist.light {
-                background-color: #fff;
+            .matchlist {
+                display: flex;
+                background-color: #000;
+                justify-content: center;
+                flex-direction: column;
             }
-            .teamlist.light > div {
-                background-color: #f2f2f2;
-            }
-            .schools.light {
-                background-color: #fff;
-            }
-            .schools.light > div {
-                background-color: #f2f2f2;
-            }
-            .indiv.light {
-                background-color: #fff;
-            }
-            .indiv.light > div {
-                background-color: #f2f2f2;
-            }
-            /*back to normal*/
             .teamlist > div {
                 text-align: center;
                 margin: 5px;
@@ -57,6 +38,14 @@
                 padding: 5px;
                 border-radius: 10px;
                 box-shadow: -2px 2px gray;
+            }
+            .matchlist > div {
+                text-align: center;
+                margin: 5px 5px 10px 5px;
+                background-color: #444;
+                padding: 5px;
+                border-radius: 10px;
+                box-shadow: -2px 2px lightgray;
             }
             .schools {
                 display: flex;
@@ -94,12 +83,24 @@
                 background-color: #444;
                 padding: 5px;
                 border-radius: 10px;
-                box-shadow: -2px 2px gray;
             }
             .wtlcard {
                 background-color: #111;
                 border-radius: 2rem;
                 padding: 0.65rem;
+            }
+            .allianceR {
+                color: #f00;
+            }
+            .allianceB {
+                color: #45b6fe;
+            }
+            .pointCard {
+                background-color: white;
+                border-radius: 2rem;
+                padding: 0.65rem;
+                color: black;
+                display: none;
             }
             .w {
                 color: green;
@@ -131,31 +132,41 @@
     <body onload="update()">
     <div class="main" id="main">
         <h1 style="text-align: center">2022 Rookie Game<br>Scoreboard</h1>
-        <h2 style="color:gray; text-align:center">Rankings</h2>
+        <h3 style="text-align:center"><a style="color:white; text-align:center; text-decoration: underline" id="rankingsTab" href="./?tab=rankings">Rankings</a>&emsp;&emsp;<a style="color:gray; text-align:center; text-decoration: none" id="matchesTab" href="./?tab=matchlist">Matches</a></h3>
         <div class="teamlist">
-            <div class="first" id="1"><h2>1st - <span><a href="" id="n1">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w1">W</span> - <span class="t" id="t1">T</span> - <span class="l" id="l1">L</span></span></span>&emsp;&emsp;<span class="p" id="p1">PTS</span></h2></div>
-            <div class="second" id="2"><h2>2nd - <span><a href="" id="n2">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w2">W</span> - <span class="t" id="t2">T</span> - <span class="l" id="l2">L</span></span></span>&emsp;&emsp;<span class="p" id="p2">PTS</span></h2></div>
-            <div class="third" id="3"><h2>3rd - <span><a href="" id="n3">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w3">W</span> - <span class="t" id="t3">T</span> - <span class="l" id="l3">L</span></span></span>&emsp;&emsp;<span class="p" id="p3">PTS</span></h2></div>
-            <div id="4"><h2>4th - <span><a href="" id="n4">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w4">W</span> - <span class="t" id="t4">T</span> - <span class="l" id="l4">L</span></span></span>&emsp;&emsp;<span class="p" id="p4">PTS</span></h2></div>
-            <div id="5"><h2>5th - <span><a href="" id="n5">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w5">W</span> - <span class="t" id="t5">T</span> - <span class="l" id="l5">L</span></span></span>&emsp;&emsp;<span class="p" id="p5">PTS</span></h2></div>
-            <div id="6"><h2>6th - <span><a href="" id="n6">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w6">W</span> - <span class="t" id="t6">T</span> - <span class="l" id="l6">L</span></span></span>&emsp;&emsp;<span class="p" id="p6">PTS</span></h2></div>
-            <div id="7"><h2>7th - <span><a href="" id="n7">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w7">W</span> - <span class="t" id="t7">T</span> - <span class="l" id="l7">L</span></span></span>&emsp;&emsp;<span class="p" id="p7">PTS</span></h2></div>
-            <div id="8"><h2>8th - <span><a href="" id="n8">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w8">W</span> - <span class="t" id="t8">T</span> - <span class="l" id="l8">L</span></span></span>&emsp;&emsp;<span class="p" id="p8">PTS</span></h2></div>
-            <div id="9"><h2>9th - <span><a href="" id="n9">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w9">W</span> - <span class="t" id="t9">T</span> - <span class="l" id="l9">L</span></span></span>&emsp;&emsp;<span class="p" id="p9">PTS</span></h2></div>
-            <div id="10"><h2>10th - <span><a href="" id="n10">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w10">W</span> - <span class="t" id="t10">T</span> - <span class="l" id="l10">L</span></span></span>&emsp;&emsp;<span class="p" id="p10">PTS</span></h2></div>
+            <div class="first" id="1"><h2>1st - <span><a href="" id="n1">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w1">W</span> - <span class="t" id="t1">T</span> - <span class="l" id="l1">L</span></span></span><br><br><span class="p" id="p1">PTS</span></h2></div>
+            <div class="second" id="2"><h2>2nd - <span><a href="" id="n2">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w2">W</span> - <span class="t" id="t2">T</span> - <span class="l" id="l2">L</span></span></span><br><br><span class="p" id="p2">PTS</span></h2></div>
+            <div class="third" id="3"><h2>3rd - <span><a href="" id="n3">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w3">W</span> - <span class="t" id="t3">T</span> - <span class="l" id="l3">L</span></span></span><br><br><span class="p" id="p3">PTS</span></h2></div>
+            <div id="4"><h2>4th - <span><a href="" id="n4">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w4">W</span> - <span class="t" id="t4">T</span> - <span class="l" id="l4">L</span></span></span><br><br><span class="p" id="p4">PTS</span></h2></div>
+            <div id="5"><h2>5th - <span><a href="" id="n5">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w5">W</span> - <span class="t" id="t5">T</span> - <span class="l" id="l5">L</span></span></span><br><br><span class="p" id="p5">PTS</span></h2></div>
+            <div id="6"><h2>6th - <span><a href="" id="n6">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w6">W</span> - <span class="t" id="t6">T</span> - <span class="l" id="l6">L</span></span></span><br><br><span class="p" id="p6">PTS</span></h2></div>
+            <div id="7"><h2>7th - <span><a href="" id="n7">TEAM</a></span><span><br><br><span class="wtlcard"><span class="w" id="w7">W</span> - <span class="t" id="t7">T</span> - <span class="l" id="l7">L</span></span></span><br><br><span class="p" id="p7">PTS</span></h2></div>
         </div>
         <br>
         <h2 style="color:gray; text-align:center">School Rankings</h2>
         <div class="schools">
-            <div class="1school" id="1school"><h2>1st - <span id="school1">SCHOOL</span><span><br><br><span class="wtlcard"><span class="w" id="sw1">W</span> - <span class="t" id="st1">T</span> - <span class="l" id="sl1">L</span></span></span>&emsp;&emsp;<span class="p" id="sp1">PTS</span></h2></div>
-            <div class="2school" id="2school"><h2>2nd - <span id="school2">SCHOOL</span><span><br><br><span class="wtlcard"><span class="w" id="sw2">W</span> - <span class="t" id="st2">T</span> - <span class="l" id="sl2">L</span></span></span>&emsp;&emsp;<span class="p" id="sp2">PTS</span></h2></div>
+            <div class="1school" id="1school"><h2>1st - <span id="school1">SCHOOL</span><span><br><br><span class="wtlcard"><span class="w" id="sw1">W</span> - <span class="t" id="st1">T</span> - <span class="l" id="sl1">L</span></span></span><br><br><span class="p" id="sp1">PTS</span></h2></div>
+            <div class="2school" id="2school"><h2>2nd - <span id="school2">SCHOOL</span><span><br><br><span class="wtlcard"><span class="w" id="sw2">W</span> - <span class="t" id="st2">T</span> - <span class="l" id="sl2">L</span></span></span><br><br><span class="p" id="sp2">PTS</span></h2></div>
         </div>
         <br><br>
         </div>
         <div class="indiv" id="team">
             <div><h2>Team Details&emsp;<a class="wtlcard" style="font-size: large; color: #fff; text-decoration: none" href="./">Back</a></h2></div><br>
-            <div><h2 style="text-align: center"><span id="indivn">TEAM</span><span><br><br><span class="wtlcard"><span class="w" id=indivw>W</span> - <span class="t" id="indivt">T</span> - <span class="l" id="indivl">L</span></span></span>&emsp;<span class="p" id="indivp">PTS</span><br><br><span id="indivsc">SCHOOL</span></h2><h4 style="text-align: center" id="indivd">DESCRIPTION</h4></div><br>
-            <div><h3>Place: <span id="indivpl"></span></h3></div>
+            <div><h2 style="text-align: center"><span id="indivn">TEAM</span><span><br><br><span class="wtlcard"><span class="w" id=indivw>W</span> - <span class="t" id="indivt">T</span> - <span class="l" id="indivl">L</span></span></span><br><br><span class="p" id="indivp">PTS</span><br><br><span id="indivsc">SCHOOL</span></h2><h4 style="text-align: center" id="indivd">DESCRIPTION</h4></div><br>
+            <div><h3>Matches: </h3><a href="./?tab=matchlist"><h4 id="indm1" style="display: none"></h4></a><a href="./?tab=matchlist"><h4 id="indm2" style="display: none"></h4></a><a href="./?tab=matchlist"><h4 id="indm3" style="display: none"></h4></a><a href="./?tab=matchlist"><h4 id="indm4" style="display: none"></h4></a><a href="./?tab=matchlist"><h4 id="indm5" style="display: none"></h4></a><a href="./?tab=matchlist"><h4 id="indm6" style="display: none"></h4></a><a href="./?tab=matchlist"><h4 id="indm7" style="display: none"></h4></a><br><br></div><br>
+            <div><h3>Current rank: <span id="indivpl"></span></h3></div><br>
+        </div>
+        <div class="matchlist" id="matchlist">
+            <h1 style="text-align: center">2022 Rookie Game<br>Scoreboard</h1>
+            <h3 style="text-align:center"><a style="color:gray; text-align:center; text-decoration: none" id="rankingsTab" href="./?tab=rankings">Rankings</a>&emsp;&emsp;<a style="color:white; text-align:center; text-decoration: underline" id="matchesTab" href="./?tab=matchlist">Matches</a></h3>
+            <div id="m1"><h2>Match 1 <br><br><span class="wtlcard"><span class="" id="m1status">Loading...</span></span><span><br><br><span class="allianceR" id="m1a1t1">T1</span> & <span class="allianceR" id="m1a1t2">T2</span></span>&emsp;<span id="m1a1pts" style="display: none">0</span><br><br><span class="allianceB" id="m1a2t1">T1</span> & <span class="allianceB" id="m1a2t2">T2</span>&emsp;<span id="m1a2pts" style="display: none">0</span></h2></div>
+            <div id="m2"><h2>Match 2 <br><br><span class="wtlcard"><span class="" id="m2status">Loading...</span></span><span><br><br><span class="allianceR" id="m2a1t1">T1</span> & <span class="allianceR" id="m2a1t2">T2</span></span>&emsp;<span id="m2a1pts" style="display: none">0</span><br><br><span class="allianceB" id="m2a2t1">T1</span> & <span class="allianceB" id="m2a2t2">T2</span>&emsp;<span id="m2a2pts" style="display: none">0</span></h2></div>
+            <div id="m3"><h2>Match 3 <br><br><span class="wtlcard"><span class="" id="m3status">Loading...</span></span><span><br><br><span class="allianceR" id="m3a1t1">T1</span> & <span class="allianceR" id="m3a1t2">T2</span></span>&emsp;<span id="m3a1pts" style="display: none">0</span><br><br><span class="allianceB" id="m3a2t1">T1</span> & <span class="allianceB" id="m3a2t2">T2</span>&emsp;<span id="m3a2pts" style="display: none">0</span></h2></div>
+            <div id="m4"><h2>Match 4 <br><br><span class="wtlcard"><span class="" id="m4status">Loading...</span></span><span><br><br><span class="allianceR" id="m4a1t1">T1</span> & <span class="allianceR" id="m4a1t2">T2</span></span>&emsp;<span id="m4a1pts" style="display: none">0</span><br><br><span class="allianceB" id="m4a2t1">T1</span> & <span class="allianceB" id="m4a2t2">T2</span>&emsp;<span id="m4a2pts" style="display: none">0</span></h2></div>
+            <div id="m5"><h2>Match 5 <br><br><span class="wtlcard"><span class="" id="m5status">Loading...</span></span><span><br><br><span class="allianceR" id="m5a1t1">T1</span> & <span class="allianceR" id="m5a1t2">T2</span></span>&emsp;<span id="m5a1pts" style="display: none">0</span><br><br><span class="allianceB" id="m5a2t1">T1</span> & <span class="allianceB" id="m5a2t2">T2</span>&emsp;<span id="m5a2pts" style="display: none">0</span></h2></div>
+            <div id="m6"><h2>Match 6 <br><br><span class="wtlcard"><span class="" id="m6status">Loading...</span></span><span><br><br><span class="allianceR" id="m6a1t1">T1</span> & <span class="allianceR" id="m6a1t2">T2</span></span>&emsp;<span id="m6a1pts" style="display: none">0</span><br><br><span class="allianceB" id="m6a2t1">T1</span> & <span class="allianceB" id="m6a2t2">T2</span>&emsp;<span id="m6a2pts" style="display: none">0</span></h2></div>
+            <div id="m7"><h2>Match 7 <br><br><span class="wtlcard"><span class="" id="m7status">Loading...</span></span><span><br><br><span class="allianceR" id="m7a1t1">T1</span> & <span class="allianceR" id="m7a1t2">T2</span></span>&emsp;<span id="m7a1pts" style="display: none">0</span><br><br><span class="allianceB" id="m7a2t1">T1</span> & <span class="allianceB" id="m7a2t2">T2</span>&emsp;<span id="m7a2pts" style="display: none">0</span></h2></div>
+            <br><br>
         </div>
         <script>
         function update () {
@@ -169,106 +180,185 @@
             }
             //set the team parameter to teamnum
             var teamnum = getUrlParams()["teamrank"];
+            var tab = getUrlParams()["tab"];
             //if teamnum exists, hide main and show team
             //else show main and hide team
             if (teamnum) {
+                //show individual team data if requested
                 document.getElementById("main").style.display = "none";
                 document.getElementById("team").style.display = "inline";
-            } else {
-                document.getElementById("main").style.display = "inline";
+                document.getElementById("matchlist").style.display = "none";
+            }
+            if (tab === "matchlist") {
+                //show matches if specified
+                document.getElementById("main").style.display = "none";
+                document.getElementById("matchlist").style.display = "inline";
                 document.getElementById("team").style.display = "none";
             }
+            if (!teamnum && !tab) {
+                //main page if no URL specifications
+                document.getElementById("main").style.display = "inline";
+                document.getElementById("team").style.display = "none";
+                document.getElementById("matchlist").style.display = "none";
+            }
+            if (tab === "rankings") {
+                //rankings tab if specified
+                document.getElementById("main").style.display = "inline";
+                document.getElementById("team").style.display = "none";
+                document.getElementById("matchlist").style.display = "none";
+            }
             //easily editable JSON with scores and other data from every team
+            /*
+            n: team name
+            s: LEAVE IT 0
+            w: wins
+            t: ties
+            l: losses
+            sc: school
+            d: description
+            */
             var jsonscores = [{
-                "n": "team1",
+                "n": "Skill Issue",
                 "s": 0,
-                "w": 9,
+                "w": 0,
                 "t": 0,
-                "l": 1,
+                "l": 2498,
                 "sc": "ma",
-                "d": "desc"
+                "d": "Nicholas Chan, Milo Kroh, Indra Gerard, Maelys De Maistre, Austin Horton, Hunter Cabra, Jenna Lee, and Viet Tran."
              }, {
-                "n": "team2",
+                "n": "Big Fork",
                 "s": 0,
                 "w": 4,
                 "t": 0,
                 "l": 6,
                 "sc": "ma",
-                "d": "desc"
+                "d": "Datis Hoghooghi, Vuk Popovich, Joaquin Baranchuk, Izabel Sharp, Jovi Wong, Sarah Chang, Jasmine Johnson, Weyceene Yang, Siboney Lynch, Kateryna Savchenko, and Henry Seeger."
              }, {
-                "n": "team3",
+                "n": "The Booligans",
                 "s": 0,
-                "w": 0,
-                "t": 0,
-                "l": 0,
-                "sc": "ma",
-                "d": "desc"
-            }, {
-                "n": "team4",
-                "s": 0,
-                "w": 0,
-                "t": 0,
-                "l": 0,
-                "sc": "ma",
-                "d": "desc"
-            }, {
-                "n": "team5",
-                "s": 0,
-                "w": 0,
-                "t": 0,
-                "l": 0,
-                "sc": "ma",
-                "d": "desc"
-            }, {
-               "n": "team6",
-               "s": 0,
-               "w": 999,
-               "t": 4,
-               "l": 949,
-               "sc": "ma",
-               "d": "desc"
-            }, {
-                "n": "team7",
-                "s": 0,
-                "w": 0,
-                "t": 0,
-                "l": 0,
-                "sc": "ma",
-                "d": "desc"
-            }, {
-                "n": "team8",
-                "s": 0,
-                "w": 0,
-                "t": 0,
-                "l": 0,
-                "sc": "cm",
-                "d": "desc"
-            }, {
-                "n": "team9",
-                "s": 0,
-                "w": 7,
-                "t": 0,
+                "w": 1,
+                "t": 2,
                 "l": 3,
-                "sc": "cm",
-                "d": "desc"
+                "sc": "ma",
+                "d": "Jonathan Gassandi, Neel Gangam, Max Spier, Jack Bullard, Tommaso Omodei, Shawnak Shivakumar, and Dane Hansen."
             }, {
-                "n": "team10",
+                "n": "Gatoraiders",
                 "s": 0,
-                "w": 4,
+                "w": 0,
                 "t": 0,
-                "l": 6,
-                "sc": "cm",
-                "d": "desc"
+                "l": 0,
+                "sc": "ma",
+                "d": "Kai Wenzel, Kapil Ayyar, Paige McGaraghan, Karinna Gadre, Ronny Isaac, Molly, and Lydia Honerkamp."
+            }, {
+                "n": "Unnamed (Team 3)",
+                "s": 0,
+                "w": 939434,
+                "t": 0,
+                "l": 65784,
+                "sc": "ma",
+                "d": "Owen Feary, Arman Azadpour, Asher Harris, Aaron Winikoff, Max Strohband, Titan Mendoza, Matthew Sanford, Isaac Chuang, Emile Freeman, Charlotte, Luis Licea, Aaron Lopez, Iris Stevenson, Burke Montague-Alamin, and Cristian Lemus."
+            }, {
+               "n": "Carlmont Team 1",
+               "s": 0,
+               "w": 2,
+               "t": 4,
+               "l": 3,
+               "sc": "cm",
+               "d": "No description was provided."
+            },
+            {
+               "n": "Carlmont Team 2",
+               "s": 0,
+               "w": 0,
+               "t": 4,
+               "l": 0,
+               "sc": "cm",
+               "d": "No description was provided."
+            }];
+        /*formatting:
+        n: match number
+        a1t1: alliance 1 team 1 name
+        a1t2: alliance 1 team 2 name
+        a2t1: alliance 2 team 1 name
+        a2t2: alliance 2 team 2 name
+        a1s: alliance 1 score
+        a2s: alliance 2 score
+        matchstatus: match satus ("done", "inprog", or "notstarted")
+        */
+        var matches = [{
+                "n": "m1",
+                "a1t1": "Skill Issue",
+                "a1t2": "Carlmont Team 2",
+                "a2t1": "Unnamed (Team 3)",
+                "a2t2": "Carlmont Team 1",
+                "a1s": 3,
+                "a2s": 2,
+                "matchstatus": "done" 
+             }, {
+                "n": "m2",
+                "a1t1": "Big Fork",
+                "a1t2": "The Booligans",
+                "a2t1": "Gatoraiders",
+                "a2t2": "Carlmont Team 2",
+                "a1s": 0,
+                "a2s": 0,
+                "matchstatus": "inprog"
+             }, {
+                "n": "m3",
+                "a1t1": "",
+                "a1t2": "",
+                "a2t1": "",
+                "a2t2": "",
+                "a1s": 0,
+                "a2s": 0,
+                "matchstatus": "notstarted"
+            }, {
+                "n": "m4",
+                "a1t1": "",
+                "a1t2": "",
+                "a2t1": "",
+                "a2t2": "",
+                "a1s": 0,
+                "a2s": 0,
+                "matchstatus": "notstarted"
+            }, {
+                "n": "m5",
+                "a1t1": "",
+                "a1t2": "",
+                "a2t1": "",
+                "a2t2": "",
+                "a1s": 0,
+                "a2s": 0,
+                "matchstatus": "notstarted"
+            }, {
+                "n": "m6",
+                "a1t1": "",
+                "a1t2": "",
+                "a2t1": "",
+                "a2t2": "",
+                "a1s": 0,
+                "a2s": 0,
+                "matchstatus": "notstarted"
+            },
+            {
+                "n": "m7",
+                "a1t1": "",
+                "a1t2": "",
+                "a2t1": "",
+                "a2t2": "",
+                "a1s": 0,
+                "a2s": 0,
+                "matchstatus": "notstarted"
             }];
             //create score data based on existing data
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 7; i++) {
                 jsonscores[i].s = jsonscores[i].w-jsonscores[i].l
             }
             //sort based off this score data
             jsonscores.sort(function(b, a){
                 return a.s - b.s;
             });
-            //AFTER SORTING fill individual team data
+            //AFTER SORTING fill individual team data- based on ranking rather than actual team name. May want to modify this because rankings change!
             if (teamnum) {
                 var jsontn = teamnum - 1
                 document.getElementById("indivn").textContent = jsonscores[jsontn].n;
@@ -276,12 +366,37 @@
                 document.getElementById("indivt").textContent = jsonscores[jsontn].t;
                 document.getElementById("indivl").textContent = jsonscores[jsontn].l;
                 document.getElementById("indivp").textContent = "Net: "+jsonscores[jsontn].s;
-                document.getElementById("indivsc").textContent = jsonscores[jsontn].sc;
+                var schoolname;
+                if (jsonscores[jsontn].sc === "ma") {
+                    schoolname = "Menlo-Atherton"
+                } else if (jsonscores[jsontn].sc === "cm") {
+                    schoolname = "Carlmont"
+                } else {
+                    schoolname = "&nbsp;"
+                }
+                document.getElementById("indivsc").textContent = schoolname;
                 document.getElementById("indivd").textContent = jsonscores[jsontn].d;
                 document.getElementById("indivpl").textContent = teamnum;
+                //use matchnumbers variable to control use of h4 tags
+                var matchnumbers = 0;
+                //populate the match numbers
+                for (var i = 1; i < 8; i++) {
+                    var jmatch = i - 1
+                    if (matches[jmatch].a1t1 === jsonscores[jsontn].n || matches[jmatch].a1t2 === jsonscores[jsontn].n) {
+                        matchnumbers++;
+                        document.getElementById("indm" + matchnumbers).style.display = "inline";
+                        document.getElementById("indm" + matchnumbers).classList.add('l');
+                        document.getElementById("indm" + matchnumbers).textContent = "Match " + i + "   ";
+                    } else if (matches[jmatch].a2t1 === jsonscores[jsontn].n || matches[jmatch].a2t2 === jsonscores[jsontn].n) {
+                        matchnumbers++;
+                        document.getElementById("indm" + matchnumbers).style.display = "inline";
+                        document.getElementById("indm" + matchnumbers).classList.add('p');
+                        document.getElementById("indm" + matchnumbers).textContent = "Match " + i + "   ";
+                    }
+                }
             }
-            //for loop to populate scoreboard
-            for (var i = 1; i < 11; i++) {
+            //for loop to populate scoreboard with team data
+            for (var i = 1; i < 8; i++) {
              var jscore = i-1
              document.getElementById("n"+i).textContent = jsonscores[jscore].n;
              document.getElementById("n"+i).href = "./?teamrank="+i;
@@ -298,7 +413,7 @@
                "l": 0,
                "s": 0,
                "n": "ma",
-               "name": "Menlo-Atherton HS",
+               "name": "Menlo-Atherton",
                "hex": "#d03d56"
             }, {
                "w": 0,
@@ -306,11 +421,11 @@
                "l": 0,
                "s": 0,
                "n": "cm",
-               "name": "Carlmont HS",
+               "name": "Carlmont",
                "hex": "#87ceeb"
             }];
-            //add all data to the school json
-            for (var i = 0; i < 10; i++) {
+            //add all data to the school json for each team
+            for (var i = 0; i < 7; i++) {
                 if (jsonscores[i].sc === "ma") {
                     schoolscores[0].s = schoolscores[0].s + jsonscores[i].s
                     schoolscores[0].w = schoolscores[0].w + jsonscores[i].w
@@ -323,7 +438,7 @@
                     schoolscores[1].l = schoolscores[1].l + jsonscores[i].l
                 }
             }
-            //sort school JSON based on score
+            //sort the *entire* 2-entry long school JSON based on score
             schoolscores.sort(function(b, a){
                 return a.s - b.s;
             });
@@ -337,7 +452,49 @@
                 document.getElementById("sp"+htmlnum).textContent = "Net: "+schoolscores[i].s;
                 document.getElementById(htmlnum+"school").setAttribute('style', 'box-shadow: -2px 2px '+schoolscores[i].hex);
             }
+        for (var i = 1; i < 8; i++) {
+            var jmatch = i-1
+            //hide match if not set
+            if (matches[jmatch].a1t1 === "" || matches[jmatch].a1t2 === "" || matches[jmatch].a2t1 === "" || matches[jmatch].a2t2 === "") {
+                document.getElementById("m"+i).style.display = "none";
+            }
+            //set based on match status
+             if (matches[jmatch].matchstatus === "done") {
+                 //show points if won
+                 document.getElementById("m"+i+"a1pts").style.display = "inline";
+                 document.getElementById("m"+i+"a2pts").style.display = "inline";
+                 //determine winner based on score
+                 if (matches[jmatch].a1s > matches[jmatch].a2s) {
+                     document.getElementById("m"+i+"status").textContent = "Winner: Red Alliance";
+                 } else if (matches[jmatch].a1s < matches[jmatch].a2s) {
+                     document.getElementById("m"+i+"status").textContent = "Winner: Blue Alliance";
+                 } else if (matches[jmatch].a1s = matches[jmatch].a2s) {
+                     document.getElementById("m"+i+"status").textContent = "Winner: Tie";
+                 }
+                 document.getElementById("m"+i+"status").classList.add('w');
+             } else if (matches[jmatch].matchstatus === "inprog") {
+                 //yellow game in progress banner if in progress
+                 document.getElementById("m"+i+"status").textContent = "Game In Progress";
+                 document.getElementById("m"+i+"status").classList.add('t');
+             } else if (matches[jmatch].matchstatus === "notstarted") {
+                 //red not started banner if not started
+                 document.getElementById("m"+i+"status").textContent = "Not yet started";
+                 document.getElementById("m"+i+"status").classList.add('l');
+             } else {
+                 //update match status with errors if encountered
+                 document.getElementById("m"+i+"status").classList.add('l');
+                 document.getElementById("m"+i+"status").textContent = "matchdata error match" + i + "!";
+             }
+            //fill in team numbers
+            document.getElementById("m"+i+"a1t1").textContent = matches[jmatch].a1t1;
+            document.getElementById("m"+i+"a1t2").textContent = matches[jmatch].a1t2;
+            document.getElementById("m"+i+"a2t1").textContent = matches[jmatch].a2t1;
+            document.getElementById("m"+i+"a2t2").textContent = matches[jmatch].a2t2;
+            //fill in alliance scores
+            document.getElementById("m"+i+"a1pts").textContent = "  " + matches[jmatch].a1s + " pts";
+            document.getElementById("m"+i+"a2pts").textContent = "  " + matches[jmatch].a2s + " pts";
         }
+    }
         </script>
     </body>
 </html>
